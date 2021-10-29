@@ -1,0 +1,172 @@
+"""
+Name: Lexe Le
+Course: CSCI 1101 B
+Assignment: Project 1, Part 2 - Midnight in Space
+Date: September 29th, 2021
+Description: This program uses stars, circles and rectangles to create a picture of an astronaut on some grassy hills in space.
+Bugs: No known bugs
+"""
+
+import turtle 
+
+def draw_star(turtle_dude, color, x_cor, y_cor, angle, side_length, filled):
+    """function that draws the star"""
+    turtle_dude.up()
+    turtle_dude.goto(x_cor, y_cor)
+    
+    turtle_dude.color(color)
+
+    if filled:
+        turtle_dude.begin_fill()
+        
+    #drawing the star
+    turtle_dude.down()    
+    turtle_dude.showturtle()
+    turtle_dude.setheading(angle)
+    turtle_dude.right(150)
+    turtle_dude.forward(side_length)
+    turtle_dude.right(-60)
+    turtle_dude.forward(side_length)
+    turtle_dude.right(120)
+    turtle_dude.forward(side_length)
+    turtle_dude.right(-60)
+    turtle_dude.forward(side_length)
+    turtle_dude.right(120)
+    turtle_dude.forward(side_length)
+    turtle_dude.right(-60)
+    turtle_dude.forward(side_length)
+    turtle_dude.right(120)
+    turtle_dude.forward(side_length)
+    turtle_dude.right(-60)
+    turtle_dude.forward(side_length)
+    turtle_dude.right(120)
+    turtle_dude.forward(side_length)
+    turtle_dude.right(-60)
+    turtle_dude.forward(side_length)
+    turtle_dude.right(120)
+    turtle_dude.forward(side_length)
+    turtle_dude.right(-60)
+    turtle_dude.forward(side_length)
+    turtle_dude.right(120)
+    turtle_dude.end_fill()
+    turtle_dude.up()
+    turtle_dude.hideturtle()
+    
+def circle(turtle_dude, x_cor, y_cor, color, radius, filled):
+    """draws circles"""
+    turtle_dude.goto(x_cor, y_cor)
+    turtle_dude.down()   
+    turtle_dude.color(color)
+    if filled:
+        turtle_dude.begin_fill() 
+        
+    turtle_dude.circle(radius)
+       
+    turtle_dude.end_fill()
+    turtle_dude.up()
+    turtle_dude.hideturtle()    
+    
+def people(turtle_dude, angle, x_cor, y_cor, color, width, height, filled):
+    """draws rectangles"""
+    turtle_dude.goto(x_cor, y_cor)
+    turtle_dude.down()   
+    turtle_dude.color(color)
+    if filled:
+        turtle_dude.begin_fill()
+    
+    turtle_dude.setheading(angle)
+    
+    #first side
+    turtle_dude.forward(width)
+    turtle_dude.left(90)
+    
+    #second side
+    turtle_dude.forward(height)
+    turtle_dude.left(90)
+    
+    #third side
+    turtle_dude.forward(width)
+    turtle_dude.left(90)
+    
+    #fourth side
+    turtle_dude.forward(height)
+    turtle_dude.left(90)    
+    
+    turtle_dude.end_fill()
+    turtle_dude.up()
+    turtle_dude.hideturtle()    
+
+def triangle(turtle_dude, angle, x_cor, y_cor, color, base, side, filled):
+    """Draws Triangles"""
+    turtle_dude.goto(x_cor, y_cor)
+    turtle_dude.down()   
+    turtle_dude.color(color)
+    if filled:
+        turtle_dude.begin_fill()
+    
+    turtle_dude.setheading(angle)    
+    turtle_dude.forward(base) #base
+    
+    turtle_dude.left(side)
+    turtle_dude.forward(base)
+    
+    turtle_dude.left(side)
+    turtle_dude.forward(base)
+    
+    turtle_dude.end_fill()
+    turtle_dude.up()
+    turtle_dude.hideturtle()  
+    
+
+def main():
+    """main function which contains instructions for drawing the picutre"""
+    window = turtle.Screen()
+    window.bgcolor("navy")
+    mikey = turtle.Turtle()
+    mikey.speed("fastest")
+    
+    #draws stars
+    draw_star(mikey, "white", -200, 150, 0, 7, True)
+    draw_star(mikey, "white", -170, 250, 45, 20, True)
+    draw_star(mikey, "white", 250, 200, 90, 10, True)
+    draw_star(mikey, "white", 230, 120, 0, 10, True)
+    
+    #creates air drops
+    circle(mikey, 20, 90, "light blue", 2, True)
+    circle(mikey, -90, 70, "light blue", 5, True)
+    circle(mikey, -90, 100, "light blue", 3, True)
+    circle(mikey, 40, 110, "light blue", 2, True)
+    circle(mikey, -120, 80, "light blue", 5, True)
+    circle(mikey, -60, 120, "light blue", 3, True)
+    circle(mikey, 10, 130, "light blue", 2, True)
+    circle(mikey, -150, 100, "light blue", 5, True)
+    circle(mikey, -80, 140, "light blue", 3, True)  
+    
+    #making the moon
+    circle(mikey, 200, 300, "Gold", 45, True)
+    circle(mikey, 230, 300, "navy", 45, True)
+    
+    #making the person
+    #head
+    people(mikey, 90, -10, 0, "wheat", 40, 10, True)
+    circle(mikey, 0, 50, "wheat", 20, True)
+    #legs
+    people(mikey, -70, -15, 0, "wheat", 20, 5, True)
+    people(mikey, -130, -20, 0, "wheat", 20, 5, True)
+    #arms
+    people(mikey, 100, -20, 20, "wheat", 5, 20, True) 
+    people(mikey, -100, -10, 25, "wheat", 5, 20, True) 
+    #helmet
+    circle(mikey, -50, 60, "light blue", 30, False)
+    
+    #hills
+    circle(mikey, -350, -350, "dark green", 400, True)
+    circle(mikey, -550, -350, "green", 300, True)
+    circle(mikey, 100, -350, "green", 300, True)
+    
+    #pointy tops for hills/ trees
+    triangle(mikey, 0, -300, -110, "dark green", 100, 120, True)
+    triangle(mikey, 0, 290, -120, "dark green", 100, 120, True)
+    
+    
+main()
